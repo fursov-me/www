@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Turkey</title>
+  </head>
+  <body>
+    <div id="result"></div>
+    <script>
+      var hotels = [
+        "Sensitive Premium Resort & Spa",
+        "Belek Soho Beach Club",
+        "Dream World Palace",
+        "Lykia World & Links Golf",
+        "The Xanthe Resort & Spa",
+        "Arnor De Luxe Hotel & Spa",
+        "Orange County Resort Hotel Kemer - Ultra All Inclusive",
+      ];
+
+      document.querySelector("#result").innerHTML =
+        hotels[Math.floor(Math.random() * hotels.length)][0];
+    </script>
+  </body>
+</html>
