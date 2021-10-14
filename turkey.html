@@ -7,27 +7,55 @@
     <title>Turkey — randomaizer</title>
   </head>
   <body>
+    Random result:
     <div id="result"></div>
+    <br />
+    Hotels:
+    <ul id="hotelsList"></ul>
     <script>
-      var hotels = [
-        ["Sensitive Premium Resort & Spa", "sensitive-premium-resortspa"],
-        ["Belek Soho Beach Club", "belek-soho-beach-club"],
-        ["Dream World Palace", "dream-world-palace"],
-        ["Lykia World & Links Golf", "lykia-worldlinks-golf"],
-        ["The Xanthe Resort & Spa", "the-xanthe-resortspa"],
-        ["Arnor De Luxe Hotel & Spa", "arnor-de-luxe-hotelspa"],
-        ["Orange County Resort Hotel Kemer - Ultra All Inclusive"],
+      let hotels = [
+        [0, "Sensitive Premium Resort & Spa", "sensitive-premium-resortspa"],
+        [0, "Belek Soho Beach Club", "belek-soho-beach-club"],
+        [0, "Dream World Palace", "dream-world-palace"],
+        [0, "Lykia World & Links Golf", "lykia-worldlinks-golf"],
+        [0, "The Xanthe Resort & Spa", "the-xanthe-resortspa"],
+        [0, "Arnor De Luxe Hotel & Spa", "arnor-de-luxe-hotelspa"],
+        [1, "Orange County Resort Hotel Kemer - Ultra All Inclusive", "42667"],
+        [
+          0,
+          "Rubi Platinum Spa Resort&suites",
+          "rubi-platinum-spa-resortsuites",
+        ],
       ];
 
-      var hotel = hotels[Math.floor(Math.random() * hotels.length)];
+      let tour = [
+        ["https://www.anextour.com/tours/turkey/"],
+        ["https://www.tez-tour.com/hotel.html?id="],
+      ];
 
-      var url = document.createElement("a");
-      url.appendChild(document.createTextNode(hotel[0]));
-      if (hotel[1] != undefined) {
+      let hotel = hotels[Math.floor(Math.random() * hotels.length)];
+
+      let url = document.createElement("a");
+      url.appendChild(document.createTextNode(hotel[1]));
+      if (hotel[2] != undefined) {
         url.target = "_blank";
-        url.href = "https://www.anextour.com/tours/turkey/" + hotel[1];
+        url.href = hotel[0] == 0 ? tour[0] + hotel[2] : tour[1] + hotel[2];
       }
       document.querySelector("#result").appendChild(url);
+
+      let hotelsList = document.getElementById("hotelsList");
+
+      hotels.forEach((hotel) => {
+        let li = document.createElement("li");
+
+        let urls = document.createElement("a");
+        urls.appendChild(document.createTextNode(hotel[1]));
+        urls.target = "_blank";
+        urls.href = hotel[0] == 0 ? tour[0] + hotel[2] : tour[1] + hotel[2];
+
+        hotelsList.appendChild(li);
+        li.appendChild(urls);
+      });
     </script>
   </body>
 </html>
