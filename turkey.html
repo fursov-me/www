@@ -4,23 +4,30 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Turkey</title>
+    <title>Turkey — randomaizer</title>
   </head>
   <body>
     <div id="result"></div>
     <script>
       var hotels = [
-        "Sensitive Premium Resort & Spa",
-        "Belek Soho Beach Club",
-        "Dream World Palace",
-        "Lykia World & Links Golf",
-        "The Xanthe Resort & Spa",
-        "Arnor De Luxe Hotel & Spa",
-        "Orange County Resort Hotel Kemer - Ultra All Inclusive",
+        ["Sensitive Premium Resort & Spa", "sensitive-premium-resortspa"],
+        ["Belek Soho Beach Club", "belek-soho-beach-club"],
+        ["Dream World Palace", "dream-world-palace"],
+        ["Lykia World & Links Golf", "lykia-worldlinks-golf"],
+        ["The Xanthe Resort & Spa", "the-xanthe-resortspa"],
+        ["Arnor De Luxe Hotel & Spa", "arnor-de-luxe-hotelspa"],
+        ["Orange County Resort Hotel Kemer - Ultra All Inclusive"],
       ];
 
-      document.querySelector("#result").innerHTML =
-        hotels[Math.floor(Math.random() * hotels.length)];
+      var hotel = hotels[Math.floor(Math.random() * hotels.length)];
+
+      var url = document.createElement("a");
+      url.appendChild(document.createTextNode(hotel[0]));
+      if (hotel[1] != undefined) {
+        url.target = "_blank";
+        url.href = "https://www.anextour.com/tours/turkey/" + hotel[1];
+      }
+      document.querySelector("#result").appendChild(url);
     </script>
   </body>
 </html>
